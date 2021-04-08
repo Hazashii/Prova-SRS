@@ -1,0 +1,23 @@
+
+QUESTÃO 1 -- BANCO DE DADOS
+
+O melhor é criar um indice único, é uma péssima ideia usar o CPF como PK, mesmo ele sendo um "unico", o ideial é as PK serem estáveis,
+além de não possuir total controle sobre o CPF, estrangeiros ou menores de idade não possuem também, então não há vantagem alguma.
+Por isso criei uma PK, com nome ID de auto incremento.
+
+QUESTAO 2-- Tem o arquivo de modelo no CASE STUDIO 2 também
+
+QUESTÃO 3-- BANCO DE DADOS
+
+SELECT NOME, SUM(F.SALARIO) AS SALARIO_TOTAL, SUM(C.SALARIO_PADRAO) AS SALARIO_PADRAO
+FROM FUNCIONARIO AS F, PESSOA AS P,cargos AS C
+WHERE F.PES_ID = P.PES_ID
+AND F.CARG_ID = C.CARG_ID
+GROUP BY NOME
+
+SELECT NOME, SUM(F.SALARIO) AS SALARIO_TOTAL, SUM(C.SALARIO_PADRAO) AS SALARIO_PADRAO
+FROM FUNCIONARIO AS F
+LEFT JOIN CARGOS as C ON F.CARG_ID = C.CARG_ID
+LEFT JOIN PESSOA AS P ON F.PES_ID = P.PES_ID
+GROUP BY NOME
+
